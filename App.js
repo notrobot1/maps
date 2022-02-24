@@ -186,9 +186,21 @@ function ready(){
 		}else if( document.location.href.includes('/place/')){
 		    console.log("qwerty");
 		    var namecompany = document.querySelector('span[jstcache="41"]').textContent;
-		    var type = document.querySelector('span[jstcache="41"]')[62];
+		    var type = document.querySelector('span[jstcache="62"]').querySelector('span[jstcache="79"]').querySelector('button[jstcache="80"]').textContent;
+		    var city = document.querySelector('div[jstcache="130"]').textContent;
+		    var number = document.getElementsByClassName('QSFF4-text gm2-body-2');
+
+
+		    for (var i = 0; i < number.length; i++) {
+                console.log(number[i].textContent);
+
+            }
+
 		    console.log(namecompany);
 		    console.log(type);
+
+		    //console.log(number);
+
 
 		}
 		
