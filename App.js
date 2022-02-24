@@ -1,6 +1,24 @@
+var sports = [];
+var newLength;
+function save(pl){
+
+           chrome.storage.local.set({arrLink: pl}, function() {
+               console.log('Value is set to ' + pl);
+			});
+}
+
+
+function startpars(){
+    console.log("start");
+    save(sports);
+    window.open('https://www.google.com.ua/maps');
+
+
+}
 
 
 function clear(){
+
 	chrome.storage.local.get(['key'], function(result) {
 			//console.log("dsf"+ result.key);
 			if (result.key!=null){
@@ -11,11 +29,21 @@ function clear(){
 				str = str+link[i]+",";
 			}
 			console.log(str.substring(0, str.length - 1));
-			chrome.storage.local.set({key: str.substring(0, str.length - 1)}, function() {
-				console.log('Value is set to ' + str.substring(0, str.length - 1));
-				getSearche();
-			});
+            if(str.substring(0, str.length - 1) === ""){
+            console.log("dddddd");
+            startpars();
+            }
 
+
+
+			    chrome.storage.local.set({key: str.substring(0, str.length - 1)}, function() {
+			    	console.log('Value is set to ' + str.substring(0, str.length - 1));
+				    getSearche();
+			    });
+
+
+			}else{
+			    console.log("else");
 			}
 		});
 	
@@ -43,6 +71,18 @@ function scroll(s){
 				setTimeout(arguments.callee, 2000);
 			}else{
 				//тут получаем ссылки
+
+
+				for (let ii = 0; ii < document.getElementsByTagName("a").length; ii++) {
+                                var pl = document.getElementsByTagName("a")[ii].href;
+								if(pl.includes("/place/")){
+                                    //save(pl, ii);
+                                    newLength = sports.push(pl);
+
+								}
+								//console.log("end");
+				}
+
 				next(s);
 			}
 	})();
@@ -102,7 +142,8 @@ function getSearche(){
 			var link = result.key.split(",");
 			
 			//for (let i = 0; i < link.length; i++) {
-				
+			console.log("hdskjhjkdsh");
+			console.log(link[0]);
 			location.href = 'https://www.google.com.ua/maps/search/'+ link[0];
 			
 			}
@@ -123,8 +164,32 @@ function ready(){
 			getSearche();
 		}else if(document.location.href.includes('search')){
 			getIem();
-			
-			
+		}else if(document.location.href == "https://www.google.com.ua/maps"){
+
+            console.log("1111111111");
+            console.log();
+            chrome.storage.local.get(['arrLink'], function(result) {
+                var len = result.arrLink.length;
+                console.log(result.arrLink);
+                window.open(result.arrLink[0]);
+                (function() {
+                    if (result.arrLink.length === len){
+                        console.log(result.arrLink.length);
+                        setTimeout(arguments.callee, 1000);
+
+		            }
+	            })();
+
+
+                //window.open('https://www.google.com.ua/maps')
+            });
+		}else if( document.location.href.includes('/place/')){
+		    console.log("qwerty");
+		    var namecompany = document.querySelector('span[jstcache="41"]').textContent;
+		    var type = document.querySelector('span[jstcache="41"]')[62];
+		    console.log(namecompany);
+		    console.log(type);
+
 		}
 		
 		
