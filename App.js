@@ -189,15 +189,23 @@ function ready(){
 		    var type = document.querySelector('span[jstcache="62"]').querySelector('span[jstcache="79"]').querySelector('button[jstcache="80"]').textContent;
 		    var city = document.querySelector('div[jstcache="130"]').textContent;
 		    var number = document.getElementsByClassName('QSFF4-text gm2-body-2');
-
+            var strend = namecompany + ","+type+",";
 
 		    for (var i = 0; i < number.length; i++) {
                 console.log(number[i].textContent);
-
+                strend = strend + number[i].textContent + ",";
             }
 
-		    console.log(namecompany);
-		    console.log(type);
+
+		    console.log(strend.substring(0, str.length - 1));
+
+            
+//		    var x = new XMLHttpRequest();
+//            x.open("GET", "http://localhost/"+strend.substring(0, str.length - 1), true);
+//            x.onload = function (){
+//                alert( x.responseText);
+//            }
+//            x.send(null);
 
 		    //console.log(number);
 
