@@ -265,6 +265,7 @@ function ready(){
 
 		}else if( document.location.href.includes('/place/')){
 		    console.log("qwerty");
+		    console.log(document.getElementsByClassName("AeaXub").length);
 //		    try {
 //		        var namecompany = document.querySelector('span[jstcache="41"]').textContent;
 //		    } catch {
@@ -290,6 +291,17 @@ function ready(){
 //		    }catch{
 //		        var number = "NO";
 //		    }
+
+
+            (function() {
+		if (document.getElementsByClassName("AeaXub").length === 0) {
+ 			setTimeout(arguments.callee, 1000);
+ 			console.log("nol");
+
+
+
+		}else{
+
 
             var number = "NO";
             var url = "NO";
@@ -321,6 +333,7 @@ function ready(){
             }
 
             var strend = namecompany + ";;"+type+";;"+number+";;"+url+";;"+city+";;"+url;
+            console.log("goooood");
             console.log(strend);
 
 
@@ -357,6 +370,9 @@ function ready(){
             });
 
 
+
+                }
+            })();
 
 
 		}
