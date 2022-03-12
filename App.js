@@ -321,13 +321,13 @@ function ready(){
             for (var i = 0; i < root.length; i++) {
             var root1 = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("Liguzb-haAclf")[0].getElementsByClassName("Liguzb-n0tgWb")[0].getElementsByTagName("img")[0].getAttribute("src")
 
-                if (root1 === '//www.gstatic.com/images/icons/material/system_gm/2x/phone_gm_blue_24dp.png'){
+                if (root1.includes('phone_gm_blue_24dp.png')){
                     number = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("QSFF4-text")[0].outerText
                 }
-                if (root1 === "//www.gstatic.com/images/icons/material/system_gm/2x/public_gm_blue_24dp.png"){
+                if (root1.includes("public_gm_blue_24dp.png")){
                     url = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("QSFF4-text")[0].outerText
                 }
-                if (root1 === "//www.gstatic.com/images/icons/material/system_gm/2x/place_gm_blue_24dp.png"){
+                if (root1.includes("place_gm_blue_24dp.png")){
                     city = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("QSFF4-text")[0].outerText
                 }
             }
