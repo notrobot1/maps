@@ -306,13 +306,15 @@ function ready(){
             var number = "NO";
             var url = "NO";
             var city = "NO";
-            try {
- 		        var type = document.querySelector('span[jstcache="62"]').querySelector('span[jstcache="79"]').querySelector('button[jstcache="80"]').textContent;
+           	    try {
+ 		        //var type = document.querySelector('span[jstcache="62"]').querySelector('span[jstcache="79"]').querySelector('button[jstcache="80"]').textContent;
+			    var type = document.querySelector('button[jsaction="pane.rating.category"]').textContent;
  		    } catch {
  		        var type = "NO";
  		    }
  		    try {
- 		        var namecompany = document.querySelector('span[jstcache="41"]').textContent;
+ 		        //var namecompany = document.querySelector('span[jstcache="41"]').textContent;
+			    var namecompany = document.getElementsByClassName("x3AX1-LfntMc-header-title-title gm2-headline-5")[0].getElementsByTagName("span")[0].textContent;
  		    } catch {
  		        var namecompany = "NO";
  		    }
