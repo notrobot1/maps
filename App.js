@@ -69,12 +69,12 @@ function save(pl){
 //проходимся по ссылкам
 function getSave(){
 //проверяем загрузку страницы
-
+console.log("SAVE");
 (function() {
 var check = document.getElementsByClassName("noprint");
 
 
-if (check.length != 0 ){
+//if (check.length != 0 ){
     chrome.storage.local.get(['arrLink'], function(result) {
             console.log(result.arrLink.length);
         if(result.arrLink.length != 0 ){
@@ -90,10 +90,10 @@ if (check.length != 0 ){
         }
 
     });
- }else{
- setTimeout(arguments.callee, 2000);
+ //}else{
+ //setTimeout(arguments.callee, 2000);
 
- }
+ //}
 
 
  })();
@@ -146,14 +146,27 @@ function clear(){
 }
 
 function next(s){
-	var but = document.getElementById('ppdPk-Ej1Yeb-LgbsSe-tJiF1e');
+	//var but = document.getElementById('ppdPk-Ej1Yeb-LgbsSe-tJiF1e');
 	//кнопка есть? жмем иначе удаляем запрос и ищем дальше
-	if (but.getAttribute("disabled") === null){
-		but.click();
-		scroll(s);
-	}else{
-		clear();
+	//if (but.getAttribute("disabled") === null){
+	//	but.click();
+	//	scroll(s);
+	//}else{
+	//	clear();
+	//}
+	//изменилась 
+	var but =  document.getElementsByTagName('button');
+	for (var i = 0; i < but.length; i++) {
+		 
+		if(but[i].className.includes("Tc0rEd") && but[i].getAttribute("aria-label") != null){
+			 
+			 console.log("OK");
+			 clear();
+		}
+		 
 	}
+	
+	
 	
 }
 
@@ -197,9 +210,11 @@ function getIem(){
 		if (document.location.href.includes('@')) {
 			
 			var s = document.getElementsByTagName("div");
+			
 			for (let i = 0; i < s.length; i++) {
-				if (s[i].className.includes("scrollbox") && s[i].getAttribute("aria-label") != null){
-					console.log(s[i].getAttribute("aria-label"));
+				console.log(s[i].getAttribute("aria-label"));
+				if (s[i].className.includes("m6QErb") && s[i].getAttribute("aria-label") != null){
+					//console.log(s[i].getAttribute("aria-label"));
 					//скролим
 					scroll(s[i]);
 				}
@@ -314,23 +329,26 @@ function ready(){
  		    }
  		    try {
  		        //var namecompany = document.querySelector('span[jstcache="41"]').textContent;
-			    var namecompany = document.getElementsByClassName("x3AX1-LfntMc-header-title-title gm2-headline-5")[0].getElementsByTagName("span")[0].textContent;
+			    //var namecompany = document.getElementsByClassName("x3AX1-LfntMc-header-title-title gm2-headline-5")[0].getElementsByTagName("span")[0].textContent;
+			    var namecompany = document.getElementsByClassName("DUwDvf fontHeadlineLarge")[0].getElementsByTagName("span")[0].textContent;
  		    } catch {
  		        var namecompany = "NO";
  		    }
 
             var root = document.getElementsByClassName("AeaXub")
             for (var i = 0; i < root.length; i++) {
-            var root1 = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("Liguzb-haAclf")[0].getElementsByClassName("Liguzb-n0tgWb")[0].getElementsByTagName("img")[0].getAttribute("src")
-
+				
+			//console.log(document.getElementsByClassName("AeaXub")[i].getElementsByClassName("cXHGnc")[0].getElementsByClassName("Eottgc")[0]);	
+            var root1 = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("cXHGnc")[0].getElementsByClassName("Eottgc")[0].getElementsByTagName("img")[0].getAttribute("src")
+            console.log(root1);
                 if (root1.includes('phone_gm_blue_24dp.png')){
-                    number = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("QSFF4-text")[0].outerText
+                    number = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("Io6YTe")[0].outerText
                 }
                 if (root1.includes("public_gm_blue_24dp.png")){
-                    url = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("QSFF4-text")[0].outerText
+                    url = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("Io6YTe")[0].outerText
                 }
                 if (root1.includes("place_gm_blue_24dp.png")){
-                    city = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("QSFF4-text")[0].outerText
+                    city = document.getElementsByClassName("AeaXub")[i].getElementsByClassName("rogA2c")[0].getElementsByClassName("Io6YTe")[0].outerText
                 }
             }
 
